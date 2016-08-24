@@ -1,0 +1,34 @@
+% Ilustração apresentando o passo de tempo e tamanho de janela para análise de áudio de tempo curto. 
+ 
+ \begin{tikzpicture}[
+    declare function={
+      excitation(\t,\w) = sin(\t*\w);
+      noise = rnd - 0.5;
+      source(\t) = excitation(\t,20) + noise;
+      filter(\t) = 1 - abs(sin(mod(\t, 50)));
+      speech(\t) = 1 + source(\t)*filter(\t);
+    }
+  ]
+    \draw[help lines] (0,1) -- (6,1);
+    \draw[black, thick, x=0.0085cm, y=1cm] (0,1) -- plot [domain=0:720, samples=300, smooth] (\x,{speech(\x)});
+	\draw[|-|] (0,-0.5) -- (2,-0.5);
+	\draw[|-|] (1,-0.75) -- (3,-0.75);
+	\draw[dashed] (1,-0.75) -- (1,-2);
+	\draw[dashed] (0,-0.75) -- (0,-2);
+	\draw[<->] (0,-2) -- (1,-2) node[] at (0.5,-1.75) {\small Passo};
+
+	\draw[dashed] (2,-1) -- (2,-2);
+	\draw[dashed] (4,-1) -- (4,-2);
+	\draw[<->] (2,-2) -- (4,-2) node[] at (3,-1.75) {\small Janela};
+	\draw[|-|] (2,-1) -- (4,-1);
+\begin{scope}[shift={(4.25,-2)}]
+    \draw[help lines] (0,1) -- (2,1);
+    \draw[gray, thick, x=0.0085cm, y=1cm] (0,1) -- plot [domain=0:240, samples=100, smooth] (\x,{speech(\x)});
+
+	\draw[->] (2.25,1) -- (3,1);
+  \filldraw[white, draw=black] (3,0.5) rectangle (5,1.5) ;
+  \node at (4,1) {An{\'a}lise};
+  \end{scope}
+
+  
+  \end{tikzpicture}
