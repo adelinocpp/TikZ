@@ -1,0 +1,44 @@
+% Diagrama de blocos para computar as componentes cepstrais na escala mel (componentes mel-cepstrais).
+
+\begin{tikzpicture}
+	% retangulo externo
+   \draw [dashed, rounded corners=0.25cm] (0,0) rectangle (15.1,3);
+	% Seta
+	\draw (0.75,1.5) node {\begin{tabular}{c}\scriptsize Entrada \\ \scriptsize $x[n]$ \end{tabular}};
+	\draw [->](0.1 ,1.5) -- (1.5,1.5);
+	% Retangulo
+	\draw [dashed, rounded corners=0.25cm] (1.5,0.75) rectangle (3,2.25);
+	\draw (2.25,1.5) node {\begin{tabular}{c} DFT  \end{tabular}};
+  %	Seta
+	\draw [->](3,1.5) -- (3.75,1.5);
+	% Retangulo
+	\draw [dashed, rounded corners=0.25cm] (3.75,0.75) rectangle (5.25,2.25);
+	\draw (4.5,1.5) node {\begin{tabular}{c}  Modulo \\  $\mid$ \, $\mid$   \end{tabular}};
+	% Seta
+	\draw (6,1.5) node {\begin{tabular}{c}\scriptsize Amplitude \\ \scriptsize espectral \end{tabular}};
+	\draw [->](5.25 ,1.5) -- (6.75,1.5);
+	% Retangulo
+	\draw [dashed, rounded corners=0.25cm] (6.75,0.75) rectangle (8.25,2.25);
+	\draw (7.5,1.5) node {\begin{tabular}{c} $C$ filtros \\  \,  \end{tabular}};
+	% diagrama dos filtros
+	\draw [ ->] ( 6.85 ,1.0) -- (8.05 ,1) ;
+	\draw [ ->] (6.95 , 0.9) -- (6.95 ,1.55) ;
+	\draw (6.95,1.0) -- (7.15,1.5) --  (7.35,1) ;
+	\draw (7.15,1.0) -- (7.35,1.5) --  (7.55,1) ;
+	\draw (7.35,1.0) -- (7.55,1.5) --  (7.75,1) ;
+	\draw (7.55,1.0) -- (7.75,1.5) --  (7.95,1) ;
+	 %	Seta
+	\draw [->](8.25,1.5) -- (9,1.5);
+	% Retangulo
+	\draw [dashed, rounded corners=0.25cm] (9,0.75) rectangle (10.5,2.25);
+	\draw (9.75,1.5) node {\begin{tabular}{c}  $log( \; )$   \end{tabular}};
+	% Seta
+	\draw (11.25,1.5) node {\begin{tabular}{c} \scriptsize $C$ bandas \\ \scriptsize espectrais \end{tabular}};
+	\draw [->](10.5 ,1.5) -- (12,1.5);
+	% Retangulo
+	\draw [dashed, rounded corners=0.25cm]  (12,0.75) rectangle (13.5,2.25);
+	\draw (12.75,1.5) node {\begin{tabular}{c}  DCT   \end{tabular}};
+	% Seta
+	\draw (14.25,1.5) node {\begin{tabular}{c}\scriptsize MFCC's \\ \scriptsize $C_{n}$ \end{tabular}};
+	\draw [->](13.5 ,1.5) -- (15,1.5);
+\end{tikzpicture}
