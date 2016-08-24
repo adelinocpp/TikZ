@@ -1,0 +1,52 @@
+% Diagrama de decisão para conparação forense de locutores (registros acusticos da voz de locutores) do Reino Unido.
+% Descrito em:
+% FRENCH, P. et al. The uk position statement on forensic speaker comparison; a rejoinder to rose and morrison. International Journal of Speech Language and the Law., v. 17, n. 1, p. 143–152, 2010.
+% Adaptado de:
+% ROSE, P.; MORRISON, G. et al. A response to the uk position statement on forensic speaker comparison. The international journal of speech, language and the law, v. 16, n. 1, p. 139, 2009.
+
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black] %
+
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black] % fill=green!30
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\begin{tikzpicture}[node distance=2cm]
+	
+\node (start) [startstop] {In\'icio};
+
+\node (pro1) [process, below of=start] {Compara Amostras};
+\draw [arrow] (start) -- (pro1);
+
+\node (dec1) [decision, below of=pro1, yshift=-1.5cm] {Consistente ?};
+\draw [arrow] (pro1) -- (dec1);
+
+\node (stop1) [startstop, right of=dec1, xshift= 2.5cm] {Falantes diferentes};
+\draw [arrow] (dec1) -- node[anchor=south] {n\~ao} (stop1);
+
+\node (stop2) [ left of=dec1, xshift= -2.5cm] {};
+\draw [arrow] (dec1) -- node[anchor=south] {Sem decis\~ao} (stop2);
+
+\node (dec2) [decision, below of=dec1, yshift=-2.5cm] {Distintivo ?};
+\draw [arrow] (dec1) -- node[anchor=west] {sim} (dec2);
+
+\node (stop3) [ below of=dec2,yshift= -2.5cm, xshift= -4cm] {};
+\draw [arrow] (dec2) -- node[anchor=south,rotate=49] {Exepcionalmente.} (stop3);
+
+\node (stop4) [ below of=dec2,yshift= -2.5cm, xshift= -2cm] {};
+\draw [arrow] (dec2) -- node[anchor=south,rotate=65] {Altamente.} (stop4);
+
+\node (stop5) [ below of=dec2,yshift= -2.5cm, xshift= 0cm] {};
+\draw [arrow] (dec2) -- node[anchor=north, yshift= -1.5cm,rotate=0] {Distintivo.} (stop5);
+
+\node (stop6) [ below of=dec2,yshift= -2.5cm, xshift= 2cm] {};
+\draw [arrow] (dec2) -- node[anchor=south,rotate=-65] {Moderadamente.} (stop6);
+
+\node (stop7) [ below of=dec2,yshift= -2.5cm, xshift= 4cm] {};
+\draw [arrow] (dec2) -- node[anchor=south,rotate=-49] {N\~ao distintivo.} (stop7);
+
+\end{tikzpicture}
