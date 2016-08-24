@@ -1,0 +1,83 @@
+% Circuito equivalente do modelo de preags vocais a duas massas 
+% necessita do pacote \usepackage[siunitx]{circuitikz}
+% OBSERVAÇÃO: se estiver utilizando o pacote ABNTex2 você terá conflito com o pacote de hifienização em francês (ou francês ou circuito, sem escolha).
+% Para retirar o pacote de francês vá em \documentclass[ ... ] e retire o idioma de hifienização francês 
+% Adaptado de:
+% ISHIZAKA, K.; FLANAGAN, J. L. Synthesis of voiced sounds from a two-mass model of the vocal cords. Bell system technical journal, Wiley Online Library, v. 51, n. 6, p. 1233–1268, 1972.
+
+
+\begin{circuitikz}[american voltages]
+   \draw[dashed] (20,0) -. (21,0)
+			      (20,4) -. (21,4)
+				  (0,-1) -. (0,5)
+			      (12,-1) -. (12,5)
+			      (29,-1) -. (29,5);			      
+	\node[] at (-1,-1) {\LARGE Pulm\~oes};
+	\node[] at (7,-1) {\LARGE Pregas Vocais};
+	\node[] at (21.5,-1) {\LARGE Trato Vocal};	
+	\node[] at (31,-1) {\LARGE  Boca};
+
+	\draw[->] (15,3.5) arc [radius=0.5, start angle=90, end angle= -90];
+    \node[] at (15,3) {$U_{g}$};	
+	\draw[->] (17,2.5) arc [radius=0.5, start angle=-90, end angle= -270];
+	\node[] at (17,3) {$U_{1}$};	
+	\draw[->] (24,3.5) arc [radius=0.5, start angle=90, end angle= -90];
+	\node[] at (24,3) {$U_{n-1}$};		
+	\draw[->] (26,2.5) arc [radius=0.5, start angle=-90, end angle= -270];
+	\node[] at (26,3) {$U_{n}$};	
+	\draw[->] (31,3.5) arc [radius=0.5, start angle=90, end angle= -90];
+	\node[] at (31,3) {$U_R$};
+
+	\draw [fill=white,ultra thick] (3.5,1) rectangle (6.5,3);
+
+	\draw[->,ultra thick] (4,0.25) -- (4,1);	
+	\node[] at (3.75,0.5) {$Q$};	
+	\draw[->,ultra thick] (6,0.25) -- (6,1);	
+	\node[] at (6.35,0.5) {$A_{g0}$};	
+	\draw[->,ultra thick] (2.75,1.5) -- (3.5,1.5);		
+	\node[] at (3,1.75) {$P_{0}$};	
+	\draw[->,ultra thick] (7.25,1.5) -- (6.5,1.5);	
+	\node[] at (7,1.75) {$U_{g}$};	
+
+	\draw[ultra thick] (4,3) -- (4,3.25);		
+	\draw[ultra thick] (6,3) -- (6,3.25);
+	\draw[->,ultra thick] (6,3.25) -- (6.5,3.25);
+	\node[] at (3,3.25) {$A_{g1}(t)$};	
+	\draw[->,ultra thick] (4,3.25) -- (3.5,3.25);
+	\node[] at (7,3.25) {$A_{g2}(t)$};	
+		
+   \node[] at (5,2) {\begin{tabular}{c} \Large Modelo das \\ \Large Pregas Vocais \end{tabular}};
+
+   	\draw (-1,0)  to[battery,v=$P_s$] (-1,4)
+     (-1,4) -- (0,4)
+     to[vR=$R_{K1}|U_{g}|$,o-] (2,4)
+     to[vR=$R_{v1}$] (4,4)
+     to[vL=$L_{g1}$] (6,4)
+	  to[vR=$R_{K2}|U_{g}|$] (8,4)
+     to[vR=$R_{v2}$] (10,4)
+     to[vL=$L_{g2}$,-o] (12,4)	
+	  
+	  to[R=$R_{1}$,o-] (14,4)
+     to[L=$L_{1}$] (16,4)	
+     to[C=$C_{1}$,*-*] (16,0) 
+     to[short, -o] (12,0) 
+     to[short, -o] (0,0) 
+     (0,0) -- (-1,0) (16,4)
+  	  to[L=$L_{1}$] (18,4)
+     to[R=$R_{1}$,-o] (20,4) (16,0) 
+     to[short] (20,0) (21,4)
+     
+     to[R=$R_{n}$,o-] (23,4)
+     to[L=$L_{n}$] (25,4)	
+     to[C=$C_{n}$,*-*] (25,0) 
+     to[short] (21,0) (25,4) 
+  	  to[L=$L_{n}$] (27,4)
+     to[R=$R_{n}$,-o] (29,4) (25,0) 
+     to[short, -o] (29,0) 
+     (29,4) -- (30,4)
+     to[L=$L_{R}$,*-*,v=$P_o$] (30,0)	
+     (30,4) -- (32,4)
+     to[R=$R_{R}$,*-*] (32,0)
+     to[short, -o] (29,0);
+
+\end{circuitikz}
