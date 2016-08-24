@@ -1,0 +1,14 @@
+\documentclass[convert={density=600,outext=.png}]{standalone}
+\usepackage{mathptmx}
+\usepackage{tikz}
+\usepackage{tipa}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows}
+\usepackage[active,pdftex,tightpage]{preview}
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+\begin{document}
+<>
+\end{document}
