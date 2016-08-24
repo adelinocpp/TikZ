@@ -1,0 +1,73 @@
+% Para visualizar no QTikZ utilize o template "Template_QTikZ_IPAchart_FigBackgound.pgs"
+% No arquivo em tex insira o pacote "tipa" com o comando \usepackage{tipa}.
+% Adaptado de:
+% SILVA, T. C. O método das vogais cardeais e as vogais do português brasileiro. Revista de Estudos da Linguagem, v. 8, n. 2, p. 127–153, 1999.
+
+\usetikzlibrary{calc,intersections}
+\usetikzlibrary{positioning}
+\begin{tikzpicture}
+
+
+% paraleleas ao plano XZ
+\draw[black,thick] (0,0,0) --  (2,0,0);
+\draw[black,thick] (0,0,-2) -- (2,0,-2);
+
+\draw[black,thick] (-0.5,1,0) --  (2,1,0);
+\draw[black,thick] (-0.5,1,-2) -- (2,1,-2);
+
+\draw[black,thick] (-1,2,0) --  (2,2,0);
+\draw[black,thick] (-1,2,-2) -- (2,2,-2);
+
+\draw[black,thick] (-1.5,3,0) --  (2,3,0);
+\draw[black,thick] (-1.5,3,-2) -- (2,3,-2);
+
+% paralelas ao plano XZ
+\draw[black,thick] (2,0,0) -- (2,0,-2);
+\draw[black,thick] (2,1,0) -- (2,1,-2);
+\draw[black,thick] (2,2,0) -- (2,2,-2);
+\draw[black,thick] (2,3,0) -- (2,3,-2);
+
+\draw[black,thick] (0,0,0) -- (0,0,-2);
+\draw[black,thick] (-0.5,1,0) -- (-0.5,1,-2);
+\draw[black,thick] (-1,2,0) -- (-1,2,-2);
+\draw[black,thick] (-1.5,3,0) -- (-1.5,3,-2);
+
+% paralelas ao plano YZ
+\draw[black,thick] (2,0,0) -- (2,3,0);
+\draw[black,thick] (2,0,-2) -- (2,3,-2);
+
+\draw[black,thick] (0,0,0) -- (-1.5,3,0);
+\draw[black,thick] (0,0,-2) -- (-1.5,3,-2);
+
+\draw[fill=black] (2,0,-0.5) circle [radius=0.1];
+\node[right] at (2,0,-0.5) {\textscripta};
+\draw[fill=black] (2,1,-1) circle [radius=0.1];
+\node[right] at (2,1,-1) {\textopeno};
+\draw[fill=black] (2,2,-1.5) circle [radius=0.1];
+\node[below] at (2,2,-1.5) {o};
+\draw[fill=black] (2,3,-2) circle [radius=0.1];
+\node[right] at (2,3,-2) {u};
+
+\draw[fill=black] (0,0,-1) circle [radius=0.1];
+\node[left] at (0,0,-1) {\textipa{a}};
+\draw[fill=black] (-.5,1,-1) circle [radius=0.1];
+\node[left] at (-.5,1,-1) {\textepsilon};
+\draw[fill=black] (-1,2,-0.5) circle [radius=0.1];
+\node[above] at (-1,2,-0.5) {\textipa{e}};
+\draw[fill=black] (-1.5,3,0) circle [radius=0.1];
+\node[left] at (-1.5,3,0) {\textipa{i}};
+
+% Setas
+\draw [<->,thick] (3.5,3,0) -- (3.5,3,-2);
+\node[right] at (3.5,3,0) {n\~ao arredondada};
+\node[right] at (3.5,3,-2) {arredondada};
+
+\draw [<->,thick] (0,0,1) -- (2,0,1);
+\node[below] at (0,0,1) {anterior};
+\node[below] at  (2,0,1) {posterior};
+
+\draw [<->,thick] (-2,0,0) -- (-2,3,0);
+\node[left] at (-2,0,0) {baixa};
+\node[left] at  (-2,3,0) {alta};
+
+\end{tikzpicture}
