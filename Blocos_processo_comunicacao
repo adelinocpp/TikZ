@@ -1,0 +1,54 @@
+% Diagrama do processo basico de comunicação humana.
+% Adaptado de:
+% FLANAGAN, J. L. Speech analysis synthesis and perception. [S.l.]: Springer Science & Business Media, 2013. v. 3.
+% e
+% FURUI, S. Digital Speech Processing: Synthesis, and Recognition, Second Edition.Taylor & Francis, 2000. (Signal Processing and Communications). ISBN 9781420002669.
+
+\begin{tikzpicture}[->,arrows=-latex]
+\node [] at (2, 5) {Falante};
+\draw [dashed, fill=white, rounded corners=3] (-1,1.4) rectangle (4.6,4.6);
+\draw [fill=white, rounded corners=3] (2.7,3.75) rectangle (4.2,4.25);
+\node [] at (3.45, 4) {Ouvido};
+\draw [ fill=white, rounded corners=3] (-0.8,2.7) rectangle (0.8,3.3);
+\node [] at (0, 3) {C\'erebro};
+\draw [fill=white, rounded corners=3] (1.8,1.7) rectangle (4.2,2.3);
+\node [] at (3, 2) {Trato Vocal};
+\node [above] at (1,4) {\footnotesize nervo auditivo};
+\draw [-] (2.7,4) -- (0,4);
+\draw [->] (0,4) -- (0,3.3);
+\node [below] at (0.5,2) {\footnotesize comando motor};
+\draw [-] (0,2.7) -- (0,2);
+\draw [->] (0,2) -- (1.8,2);
+\draw [->] (4.2,2) -- (6.3,2);
+\node [align=center,] at (5.4,2) {\footnotesize mensagem \\ \footnotesize enviada};
+\draw [->] (5.1,2.5) -- (4.2,4);
+\node [left] at (4.7,3.2) {\footnotesize realimenta\c{c}\~ao};
+
+\draw [] (6.65,2) circle [radius=0.35];
+\draw [->] (6.65,3.35) -- (6.65,2.35);
+\node [align=center, above] at (6.65,3.35) {\footnotesize fonte de \\ \footnotesize ru\'ido};
+
+\node [] at (11.3, 5) {Ouvinte};
+\draw [dashed, fill=white, rounded corners=3] (8.7,1.4) rectangle (14.3,4.6);
+\draw [fill=white, rounded corners=3] (9.1,3.75) rectangle (10.6,4.25);
+\node [] at (9.85, 4) {Ouvido};
+\draw [ fill=white, rounded corners=3] (12.5,2.7) rectangle (14.1,3.3);
+\node [] at (13.3, 3) {C\'erebro};
+\node [above] at (12.3,4) {\footnotesize nervo auditivo};
+\draw [-] (10.6,4) -- (13.3,4);
+\draw [->] (13.3,4) -- (13.3,3.3);
+\node [align=center,rotate=43.6] at (8.05,3) {\footnotesize mensagem \\ \footnotesize recebida};
+\draw [->] (7,2) -- (9.1,4);
+
+
+\node [align=center] at (0, 0.75) {Lingu\'istico \\ Significado};
+
+\node [align=center] at (3.3, 0.75) {Fisiol\'ogico \\ Dito/Expresso};
+
+\node [align=center] at (6.65, 0.75) {Processo Ac\' ustico \\ Sons da Fala};
+
+\node [align=center] at (10, 0.75) {Fisiol\'ogico \\ Ouvido/Analisado};
+
+\node [align=center] at (13.3, 0.75) {Lingu\'istico \\ Entendido};
+
+\end{tikzpicture}
