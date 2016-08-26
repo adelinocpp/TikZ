@@ -1,0 +1,72 @@
+% Diagrama mecanico do modelo de pregas vocas a quatro massas, duas por lado
+% Adaptado de:
+% ISHIZAKA, K.; FLANAGAN, J. L. Synthesis of voiced sounds from a two-mass model of the vocal cords. Bell system technical journal, Wiley Online Library, v. 51, n. 6, p. 1233–1268, 1972.
+
+\usetikzlibrary{decorations.pathmorphing,patterns,calc,patterns,decorations.pathmorphing,decorations.markings}
+\begin{tikzpicture}
+
+\tikzstyle{damper}=[thick,decoration={markings,  mark connection node=dmp,  mark=at position 0.5 with 
+{
+    	\node (dmp) [thick,inner sep=0pt,transform shape,rotate=-90,minimum
+width=15pt,minimum height=3pt,draw=none] {};
+   		 \draw [thick] ($(dmp.north east)+(2pt,0)$) -- (dmp.south east) -- (dmp.south
+west) -- ($(dmp.north west)+(2pt,0)$);
+    	\draw [thick] ($(dmp.north)+(0,-5pt)$) -- ($(dmp.north)+(0,5pt)$);
+}
+}, decorate]
+
+	\draw [dashed, ultra thin] (0,-1) -- (0,3.5);
+	% Massas
+	\draw [fill=white] (-3,2.1) rectangle (-1,3.1);
+	\draw [fill=white] (-4,0) rectangle (-2,2);
+	\draw [fill=white] (3,2.1) rectangle (1,3.1);
+	\draw [fill=white] (4,0) rectangle (2,2);
+	% Amortecedores molas direita massa 1
+	\draw[damper] (-3,2.35) -- (-5,2.35);
+	\draw[decorate,decoration={aspect=0.5, segment length=2mm, amplitude=1.5mm,coil}] (-3,2.85) -- (-5,2.85);
+	\draw[damper] (-4,0.5) -- (-5,0.5);
+	\draw[decorate,decoration={aspect=0.5, segment length=1.5mm, amplitude=2mm,coil}] (-4,1.5) -- (-5,1.5);
+	% Amortecedores molas esquerda massa 1
+	\draw[damper] (3,2.35) -- (5,2.35);
+	\draw[decorate,decoration={aspect=0.5, segment length=2mm, amplitude=1.5mm,coil}] (3,2.85) -- (5,2.85);
+	\draw[damper] (4,0.5) -- (5,0.5);
+	\draw[decorate,decoration={aspect=0.5, segment length=1.5mm, amplitude=2mm,coil}] (4,1.5) -- (5,1.5);
+	% Molas de interligacao
+	\draw[decorate,decoration={aspect=0.5, segment length=2mm, amplitude=1.5mm,coil}] (-3,1) -- (-2,2.55);
+	\draw[decorate,decoration={aspect=0.5, segment length=2mm, amplitude=1.5mm,coil}] (3,1) -- (2,2.55);
+
+	\draw [fill=white] (-5.5,0) rectangle (-5,3.25);
+	\fill [pattern = north east lines] (-5.5,0) rectangle (-5,3.25);
+	
+	\draw [fill=white] (5.5,0) rectangle (5,3.5);
+	\fill [pattern = north east lines] (5.5,0) rectangle (5,3.5);
+
+	\draw [] plot [smooth, tension=0.1] coordinates { (-4.25,3.5) (-4,3.25) (-0.75,3.25)  (-1,2.1)  (-2,0) (-4,-0.5) (-4.5,-1)};
+	\draw [] plot [smooth, tension=0.1] coordinates { (4.25,3.5) (4,3.25) (0.75,3.25)  (1,2.1)  (2,0) (4,-0.5) (4.5,-1)};
+
+	\draw[|->] (0,0.25) -- (2,0.25) node[shift={(-1,-0.2)}] {$x_{1}$};
+	\draw[|->] (0,0.25) -- (-2,0.25) node[shift={(1,-0.2)}] {$x_{1}$};
+	\draw[|->] (0,3) -- (1,3) node[shift={(-0.7,0.2)}] {$x_{2}$};
+	\draw[|->] (0,3) -- (-1,3) node[shift={(0.7,0.2)}] {$x_{2}$};	
+
+	\draw[|-|] (0.75,3.1) -- (0.75,2.1) node[shift={(-0.3,0.3)}] {$d_{1}$};
+	\draw[|-|] (-0.75,3.1) -- (-0.75,2.1) node[shift={(0.3,0.3)}] {$d_{1}$};	
+	\draw[|-|] (1.75,2) -- (1.75,0) node[shift={(-0.3,1.7)}] {$d_{1}$};
+	\draw[|-|] (-1.75,2) -- (-1.75,0) node[shift={(0.3,1.7)}] {$d_{1}$};	
+
+	\node at (3,0.5) {$m_{1}$};
+	\node at (2,2.75) {$m_{2}$};
+	\node at (2.3,1.3) {$k_{c}$};
+	\node at (4.5,1) {$r_{1}$};
+	\node at (4.5,1.9) {$k_{1}$};
+	\node at (4.5,2.5) {$r_{2}$};
+	\node at (4.5,3.2) {$k_{2}$};
+
+	\node at (-3,0.5) {$m_{1}$};
+	\node at (-2,2.75) {$m_{2}$};
+	\node at (-2.3,1.3) {$k_{c}$};
+	\node at (-4.5,1) {$r_{1}$};
+	\node at (-4.5,1.9) {$k_{1}$};
+	\node at (-4.5,2.5) {$r_{2}$};
+	\node at (-4.5,3.2) {$k_{2}$};
+\end{tikzpicture}
