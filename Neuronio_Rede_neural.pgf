@@ -1,0 +1,58 @@
+%  Pequeno diagrama explicativo de uma rede neural
+% Deixar na mesma pasta (ou no diretório de imagens) o arquivo "Neuronio_pb_v2.png"
+% utilizar template "Template_QTikZ_IPAchart_FigBackgound.pgs"
+% Adaptado de: http://www.texample.net/tikz/examples/neural-network/
+% Imagem: http://www.milad.no/2015/02/07/creating-a-3d-neuron-scene-in-blender/
+\def\layersep{2.5cm}
+
+\begin{tikzpicture}[>=latex,background rectangle/.style={fill=white}, show background rectangle, shorten >=1pt,->,draw=black, node distance=\layersep]
+ 
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron, fill=black!50];
+    \tikzstyle{output neuron}=[neuron, fill=black!35];
+    \tikzstyle{hidden neuron}=[neuron, fill=black!65];
+    \tikzstyle{annot} = [text width=4em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,4}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+        \node[input neuron, pin=left:Entrada \y] (I-\name) at (0,-\y) {};
+
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,5}
+        \path[yshift=0.5cm]
+            node[hidden neuron] (H-\name) at (\layersep,-\y cm) {};
+
+    % Draw the output layer node
+    \node[output neuron,pin={[pin edge={->}]right:Saida}, right of=H-3] (O) {};
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    \foreach \source in {1,...,4}
+        \foreach \dest in {1,...,5}
+            \path (I-\source) edge (H-\dest);
+
+    % Connect every node in the hidden layer with the output layer
+    \foreach \source in {1,...,5}
+        \path (H-\source) edge (O);
+
+ 
+ 	\node[] at (-8,-2) {\includegraphics[width=8cm] {Neuronio_pb_v2.png}};
+
+    % Annotate the layers
+    \node[annot,above of=H-1, node distance=1cm] (hl) {Camada oculta};
+    \node[annot,left of=hl] {Camada de entrada};
+    \node[annot,right of=hl] {Camada de sa\'ida};
+
+    \node[] at (-10,1) {Dentritos};
+   \draw[->] (-10,0.75) -- (-9,-0.35);
+   \draw[->] (-10,0.75) -- (-10.5,-0.6);
+    \node[] at (-8,1) {Ax\^onio};
+   \draw[->] (-8,0.75) -- (-7.5,-0.6);
+	\node[] at (-6,-2) {Sinapses};
+   \draw[->] (-6,-1.75) -- (-5,-1);
+	\node[annot] at (-7,-3) {N\'ucleo celular};
+   \draw[->] (-7.5,-3) -- (-9.5,-2.35);
+
+\end{tikzpicture}
