@@ -1,0 +1,45 @@
+% 
+% Adaptado de: 
+% WILLSKY, Alan S.; OPPENHEIM, Alan V. Sinais e Sistemas. 2010.
+
+\begin{tikzpicture}
+\draw (6.5,1.5) node[below] {\large$...$};
+\begin{axis}[ standard, xlabel={}, every axis plot post/.style={mark options={fill=black}},
+                ymin=0,  ymax=2,
+				xtick={-3, ..., 3},
+		      xmin= -3, xmax=3]
+				\addplot+[ domain = 0:3, samples = 4, ycomb,black,ultra thick, mark = *] {1};
+                \addplot+[domain = -3:-1, samples = 3, ycomb,black, ultra thick, mark = *] {0};
+            \end{axis}
+\draw (0.25,1.5) node[below] {\large$...$};
+
+\begin{scope}[shift={(0,-6)}]
+\begin{axis}[ standard, xlabel={}, every axis plot post/.style={mark options={fill=black}},
+                ymin=0,  ymax=2,
+				xtick={-3, ..., 3},
+		      xmin= -3, xmax=3]
+				\addplot+[ domain = 1:3, samples = 3, ycomb,black,ultra thick, mark = *] {0};
+                \addplot+[domain = -3:0, samples = 4, ycomb,black, ultra thick, mark = *] {1};
+            \end{axis}
+\draw (6.5,1.5) node[below] {\large$...$};
+\draw (0.25,1.5) node[below] {\large$...$};
+\end{scope}
+
+\begin{scope}[shift={(0,-12)}]
+\begin{axis}[ standard, xlabel={}, every axis plot post/.style={mark options={fill=black}},
+                ymin=0,  ymax=2,
+				xtick={-3, ..., 3},
+		      xmin= -3, xmax=3]
+				\addplot+[ domain = 1:3, samples = 3, ycomb,black,ultra thick, mark = *] {1};
+                \addplot+[domain = -3:-1, samples = 3, ycomb,black,ultra thick, mark = *] {1};
+				 \addplot+[ ycomb,black,thick, mark = *] (0,2);
+            \end{axis}
+\draw (6.5,1.5) node[below] {\large$...$};
+\draw (0.25,1.5) node[below] {\large$...$};
+\end{scope}
+
+\draw (0,-1) node[below] {\Huge$+$};
+\draw (0,-7) node[below] {\Huge$=$};
+
+
+\end{tikzpicture}
